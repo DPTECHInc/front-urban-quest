@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 /**
  * SOURCE de https://www.geeksforgeeks.org/how-to-develop-user-registration-form-in-reactjs/
  */
@@ -19,6 +19,21 @@ function CreateAccount(props) {
     // Handling the name change
     const handleName = (e) => {
         setName(e.target.value);
+        setSubmitted(false);
+    };
+    // Handling the lastname change
+    const handleLastname = (e) => {
+        setLastname(e.target.value);
+        setSubmitted(false);
+    };
+    // Handling the pseudo change
+    const handlePseudo = (e) => {
+        setPseudo(e.target.value);
+        setSubmitted(false);
+    };
+    // Handling the pseudo change
+    const handleNaissance = (e) => {
+        setNaissance(e.target.value);
         setSubmitted(false);
     };
 
@@ -43,6 +58,23 @@ function CreateAccount(props) {
             setSubmitted(true);
             setError(false);
         }
+        sendForm();
+    };
+    const sendForm = async () => {
+        const response = await fetch("http://localhost:3002/register", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                nom: name,
+                prenom: lastname,
+                naissance: naissance,
+                pseudo: pseudo,
+                email: email,
+                password: password,
+            }),
+        });
     };
 
     // Showing success message
@@ -91,11 +123,17 @@ function CreateAccount(props) {
                 <input onChange={handleName} className="input" data-field-name="nom" value={name} type="text" />
 
                 <label className="label">Prenom</label>
-                <input onChange={handleName} className="input" data-field-name="prenom" value={lastname} type="text" />
+                <input
+                    onChange={handleLastname}
+                    className="input"
+                    data-field-name="prenom"
+                    value={lastname}
+                    type="text"
+                />
 
                 <label className="label">Date de Naissance</label>
                 <input
-                    onChange={handleName}
+                    onChange={handleNaissance}
                     className="input"
                     data-field-name="naissance"
                     value={naissance}
@@ -103,7 +141,7 @@ function CreateAccount(props) {
                 />
 
                 <label className="label">Pseudo</label>
-                <input onChange={handleName} className="input" data-field-name="pseudo" value={pseudo} type="text" />
+                <input onChange={handlePseudo} className="input" data-field-name="pseudo" value={pseudo} type="text" />
 
                 <label className="label">Email</label>
                 <input onChange={handleEmail} className="input" data-field-name="email" value={email} type="email" />
