@@ -1,16 +1,16 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function NavBar(props) {
     return (
         <nav className="navBar">
             <ul className="myNavUl">
-                <li>
+                <li className="myNavLi">
                     <Link to="/" className={props.currentRoute === "home" ? "active" : ""}>
                         Accueil
                     </Link>
                 </li>
-                <li>
+                <li className="myNavLi">
                     <Link to="/login" className={props.currentRoute === "user" ? "active" : ""}>
                         Login / Connexion
                     </Link>
