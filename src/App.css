@@ -6,8 +6,9 @@ body {
 }
 
 .App-logo {
-    height: 15vmin;
+    height: 10vmin;
     pointer-events: none;
+    margin: 15px;
 }
 
 .App-header {
@@ -26,4 +27,18 @@ body {
 
 .navBar {
     display: flex;
+    width: 100%;
+}
+
+a {
+    color: white;
+}
+
+.myNavUl {
+    display: flex;
+}
+
+.myNavLi {
+    list-style-type: none;
+    margin: 10px;
 }
