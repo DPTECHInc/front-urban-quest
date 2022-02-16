@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(218, 216, 216);
+}
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 15vmin;
+    pointer-events: none;
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+.navBar {
+    display: flex;
+}
