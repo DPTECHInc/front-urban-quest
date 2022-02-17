@@ -1,8 +1,6 @@
 import { GrLike } from "react-icons/gr";
 import { useState } from "react";
-
-// import { Button } from "antd";
-
+import "../styles/Post.css";
 function Post(props) {
     const postContent = props.content;
 
@@ -15,12 +13,18 @@ function Post(props) {
 
     return (
         <div className="Post">
-            <h2>{postContent.nom}</h2>
-            <p>{postContent.contenu}</p>
+            <h2 className="TitrePost">{postContent.nom}</h2>
+            {/* 
+                <p className="d-flex justify-content-center">
+                    to test to align content
+                    using Bootstrap c
+                </p>
+             */}
+            <p className="PostContent">{postContent.contenu}</p>
             <div>
                 <div>
-                    <h3>{likes}</h3>
-                    <GrLike onClick={handleLikes}></GrLike>
+                    <h3 id="LikeData">{likes}</h3>
+                    <GrLike size="30" id="LikeButtonon" onClick={handleLikes}></GrLike>
                 </div>
                 <div>
                     <h3>{postContent.comments}</h3>
