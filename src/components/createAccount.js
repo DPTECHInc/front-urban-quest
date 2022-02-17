@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 /**
  * SOURCE de https://www.geeksforgeeks.org/how-to-develop-user-registration-form-in-reactjs/
  */
@@ -61,7 +61,7 @@ function CreateAccount(props) {
         sendForm();
     };
     const sendForm = async () => {
-        const response = await fetch("http://localhost:3002/register", {
+        await fetch("http://localhost:3002/register", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
