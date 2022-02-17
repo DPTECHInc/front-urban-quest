@@ -15,6 +15,11 @@ function NavBar(props) {
                         Login / Connexion
                     </Link>
                 </li>
+                <li className="myNavLi">
+                    <Link to="/profil" className={props.currentRoute === "user" ? "active" : ""}>
+                        Profil
+                    </Link>
+                </li>
             </ul>
         </nav>
     );
