@@ -1,0 +1,23 @@
+.Post {
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: rgba(134, 134, 134, 0.486);
+    border: 5px solid rgb(187, 0, 0);
+    border-radius: 30px;
+    margin: 2rem auto 5rem auto;
+    width: 55rem;
+    max-width: 100%;
+    padding: 2em;
+}
+
+.PostContent {
+    text-align: justify;
+}
+#LikeData {
+    justify-content: center;
+    display: flex;
+}
+#LikeButton {
+    display: flex !important;
+    justify-content: center !important;
+}

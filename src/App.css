@@ -1,5 +1,6 @@
 body {
     background-color: rgb(218, 216, 216);
+    margin: 0 10vw 50vw 10vw;
 }
 .App {
     text-align: center;
@@ -8,17 +9,28 @@ body {
 .App-logo {
     height: 10vmin;
     pointer-events: none;
-    margin: 15px;
+    margin: 1rem 5rem 1rem 0rem;
 }
 
 .App-header {
-    background-color: #282c34;
-    min-height: 20vh;
+    background: rgb(152, 109, 109);
+    background: linear-gradient(
+        90deg,
+        rgba(152, 109, 109, 1) 12%,
+        rgba(158, 164, 163, 1) 53%,
+        rgba(133, 179, 189, 1) 100%
+    );
+    /* background-image: url("../src/assets/login-background.jpg"); */
+    background-size: auto;
+    background-repeat: no-repeat;
+    min-height: 10vh;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+    border-radius: 20px;
+    margin: 50px auto 20px auto;
 }
 
 .App-link {
@@ -27,6 +39,7 @@ body {
 
 .navBar {
     display: flex;
+    justify-content: center;
     width: 100%;
 }
 
@@ -41,4 +54,27 @@ a {
 .myNavLi {
     list-style-type: none;
     margin: 10px;
+}
+.AddButton {
+    width: 50px;
+    margin: auto;
+}
+.AddPostSection {
+    justify-content: center;
+    display: flex;
+    background-color: rgb(206, 135, 22);
+    max-width: 20rem;
+    margin: auto;
+    border-radius: 10px;
+}
+.TitreAddSection {
+    margin: auto;
+}
+
+/* Affichage ou non d'un élément */
+.visually-display {
+    display: block;
+}
+.visually-hidden {
+    display: none;
 }
