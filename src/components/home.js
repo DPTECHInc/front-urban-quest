@@ -1,7 +1,6 @@
 import React from "react";
-import ButtonPost from "./ButtonPost";
 import PostLists from "./PostLists";
-
+import ButtonPost from "./ButtonPost";
 function Home() {
     return (
         <div>
