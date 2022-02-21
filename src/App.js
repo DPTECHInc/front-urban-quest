@@ -4,14 +4,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/navBar";
 import Login from "./components/login";
 import CreateAccount from "./components/createAccount";
-import CreatePost from "./components/createPost";
 import Home from "./components/home";
 import Profil from "./components/profil";
+import CreatePost from "./components/createPost";
+import EditProfil from "./components/EditProfil";
 
 function App() {
-    // doit on afficher ou non le formulaire de création de post
-    // true => oui, false => ne rien afficher
-
     return (
         <div className="App">
             <Router>
@@ -24,6 +22,8 @@ function App() {
                     <Route path="/register" element={<CreateAccount></CreateAccount>}></Route>
                     <Route path="/" element={<Home />}></Route>
                     <Route path="/profil" element={<Profil />}></Route>
+                    <Route path="/profil/edit" element={<EditProfil />}></Route>
+                    <Route path="/addpost" element={<CreatePost />}></Route>
                 </Routes>
             </Router>
         </div>
