@@ -9,13 +9,50 @@ import "../styles/Login.css";
 function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [backendResponse, setBackendResponse] = useState("");
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
+
+        // Options de la requête
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email,
+                password,
+            }),
+        };
+
+        // Requête de connexion
+        const response = await fetch("http://localhost:3002/login", options);
+
+        // Lecture du body de la réponse
+        const responseBody = await response.json();
+
+        if (responseBody.message) {
+            // Erreur or not (always)
+            setBackendResponse(responseBody.message);
+        }
+        // Erreur
+        if (response.status !== 200) {
+            console.log(responseBody.message);
+            return;
+        }
+
+        if (responseBody.token) {
+            // Stockage
+            localStorage.setItem("@token", responseBody.token);
+            console.log("you are now logged in");
+            console.log("//TODO : clear form, and return back to home");
+            return;
+        }
     }
 
     return (
@@ -29,12 +66,13 @@ function Login(props) {
                     <Form.Label>Mot de passe</Form.Label>
                     <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </Form.Group>
-                <Button block size="lg" type="submit" disabled={!validateForm()}>
+                <Button size="lg" type="submit" disabled={!validateForm()}>
                     Se connecter
                 </Button>
                 <Link to="/register" block size="lg" type="button">
                     Pas de compte ?
                 </Link>
+                {backendResponse && <span>{backendResponse}</span>}
             </Form>
         </div>
     );
