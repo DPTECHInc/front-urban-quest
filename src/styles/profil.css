@@ -1,0 +1,59 @@
+.profil {
+    width: 100%;
+    height: 100%;
+}
+
+.backgroundImg {
+    height: 250px;
+}
+
+.headerPost {
+    border-radius: 10px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    padding: 6px;
+    justify-content: center;
+}
+
+.imageHeader {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.imageLogoHeader {
+    width: 100px;
+    display: flex;
+    position: relative;
+    bottom: 60px;
+    left: 20px;
+    background: white;
+    height: 100px;
+    border-radius: 10px;
+    border: 1px solid rgb(193, 193, 193);
+}
+
+.navUlProfil {
+    display: flex;
+}
+
+.navProfil {
+    display: flex;
+    position: relative;
+    left: 900px;
+    bottom: 145px;
+}
+
+.buttonEdit {
+    height: 45px;
+    width: 120px;
+    border-radius: 10px;
+}
+
+.myPreviousPost {
+    margin: 0 auto;
+    background-color: white;
+    width: 70%;
+    border-radius: 10px;
+    height: 400px;
+    padding: 10px;
+}

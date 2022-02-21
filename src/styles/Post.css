@@ -43,3 +43,26 @@
     font-size: 1.3rem;
     margin-right: 1rem;
 }
+
+/* Ajout de commentaire */
+.add-comment svg {
+    cursor: pointer;
+}
+/* btn ajouter (mais non possible) */
+.add-comment svg.disable {
+    cursor: not-allowed;
+}
+/* btn ajouter */
+.add-comment svg.add {
+    color: green;
+}
+
+/* btn annuler (replier le formulaire) */
+.add-comment svg.cancel {
+    color: red;
+}
+
+/* btn annuler (mais pas possible : envoi en cours) */
+.add-comment svg.cancel.disable {
+    color: inherit;
+}
