@@ -61,7 +61,7 @@ function CreateAccount(props) {
         sendForm();
     };
     const sendForm = async () => {
-        await fetch("http://localhost:3002/register", {
+        const response = await fetch("http://localhost:3002/register", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -75,6 +75,20 @@ function CreateAccount(props) {
                 password: password,
             }),
         });
+        // Lecture du body de la réponse
+        const responseBody = await response.json();
+
+        // Erreur
+        if (response.status !== 200) {
+            console.log(responseBody.message);
+            return;
+        }
+        if (responseBody.token) {
+            console.log("you are now registered (and logged in)");
+            localStorage.setItem("@token", responseBody.token);
+            console.log("//TODO : clear form, and return back to home");
+            return;
+        }
     };
 
     // Showing success message
