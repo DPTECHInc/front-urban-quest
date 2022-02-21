@@ -1,7 +1,7 @@
 import React from "react";
-// import { register } from "../lib/api/public";
 import { useState } from "react";
-// import "../css/createPost.css";
+import { Link, useNavigate } from "react-router-dom";
+import AddImage from "./ButtonImg";
 
 const CreatePost = (props) => {
     // const handleFinish = async (value) => {
@@ -21,7 +21,7 @@ const CreatePost = (props) => {
             setNom(value);
         }
     };
-
+    const navigate = useNavigate();
     const [contenu, setContenu] = useState("");
     const handleChangeContenu = (event) => {
         const value = event.target.value;
@@ -38,7 +38,7 @@ const CreatePost = (props) => {
         }
     };
 
-    const [passLocation, setLocation] = useState("");
+    const [location, setLocation] = useState("");
     const handleChangeLocation = (event) => {
         const value = event.target.value;
         if (value !== "") {
@@ -46,24 +46,74 @@ const CreatePost = (props) => {
         }
     };
 
-    // const[butCreation, setButCreation] = useState(0);
-    const handleButCreation = (event) => {
-        // const value = event.target.value;
-        // if(value == true) {
-        // console.log(email);
-        // console.log(pass);
-        // useState(true);
+    const [image, setImage] = useState(null);
+
+    // Handling the form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (nom === "" || contenu === "" || categorie === "") {
+            setError(true);
+        } else {
+            setSubmitted(true);
+            setError(false);
+        }
+        sendPost();
+        navigate("/");
     };
+    const sendPost = async () => {
+        await fetch("http://localhost:3002/posts", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                nom: nom,
+                contenu: contenu,
+                categorie: categorie,
+                location: location,
+            }),
+        });
+    };
+    //Redirect to HOME after post form
+
+    // Showing success message
+    // const successMessage = () => {
+    //     return (
+    //         <div
+    //             className="success"
+    //             style={{
+    //                 display: submitted ? "" : "none",
+    //             }}
+    //         >
+    //             <h1>Post {nom} as été créer avec succès !!</h1>
+    //         </div>
+    //     );
+    // };
+
+    // Showing error message if error is true
+    // const errorMessage = () => {
+    //     return (
+    //         <div
+    //             className="error"
+    //             style={{
+    //                 display: error ? "" : "none",
+    //             }}
+    //         >
+    //             <h1>Merci de renseigner tout les champs</h1>
+    //         </div>
+    //     );
+    // };
 
     return (
-        <div className={props.visibility ? "visually-display" : "visually-hidden"}>
+        <div>
             <form method="POST">
                 <div className="creationPost">
                     <div>
+                        <label htmlFor="nom"></label>
                         <input
                             className="inputNom"
                             type="text"
-                            placeholder="Nom"
+                            placeholder="TITRE"
                             id="nom"
                             name="nom"
                             onChange={handleChangeNom}
@@ -71,10 +121,11 @@ const CreatePost = (props) => {
                     </div>
 
                     <div>
+                        <label htmlFor="contenu"></label>
                         <input
                             className="inputContenu"
                             type="text"
-                            placeholder="Contenu"
+                            placeholder="CONTENU"
                             id="contenu"
                             name="contenu"
                             onChange={handleChangeContenu}
@@ -82,23 +133,33 @@ const CreatePost = (props) => {
                     </div>
 
                     <div>
-                        {" "}
+                        <label htmlFor="categorie"></label>
+                        <select className="inputCategorie" id="categorie" onChange={handleChangeCategorie}>
+                            <option>Choisir catégorie</option>
+                            <option value="Urbex">Urbex blog</option>
+                            <option value="Enigmes">Enigmes blog</option>
+                            <option value="Nft">NFT E-Commerce</option>
+                        </select>
+                        {/* <p>{categorie}</p> */}
+                    </div>
+                    <div>
+                        <label htmlFor="location"></label>
                         <input
-                            className="inputCategorie"
-                            type="categorie"
-                            placeholder="Categorie"
-                            id="categorie"
-                            name="categorie"
-                            onChange={handleChangeCategorie}
+                            className="inputLocation"
+                            type="text"
+                            placeholder="Location"
+                            id="location"
+                            name="location"
+                            onChange={handleChangeLocation}
                         />
                     </div>
 
-                    <div>
-                        <input className="inputMdp" type="password" placeholder="Mot de passe" id="mdp" name="mdp" />
-                    </div>
+                    <AddImage onSelectImage={setImage} />
 
                     <div>
-                        <button className="butConnexion">Créer un post</button>
+                        <button onClick={handleSubmit} type="submit" className="butCreate">
+                            Créer un post
+                        </button>
                     </div>
                 </div>
             </form>
