@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/Register.css";
 /**
  * SOURCE de https://www.geeksforgeeks.org/how-to-develop-user-registration-form-in-reactjs/
  */
@@ -131,43 +132,56 @@ function CreateAccount(props) {
                 {successMessage()}
             </div>
 
-            <form method="POST">
+            <form method="POST" className="registerForm">
                 {/* Labels and inputs for form data */}
-                <label className="label">Nom</label>
-                <input onChange={handleName} className="input" data-field-name="nom" value={name} type="text" />
-
-                <label className="label">Prenom</label>
-                <input
-                    onChange={handleLastname}
-                    className="input"
-                    data-field-name="prenom"
-                    value={lastname}
-                    type="text"
-                />
-
-                <label className="label">Date de Naissance</label>
-                <input
-                    onChange={handleNaissance}
-                    className="input"
-                    data-field-name="naissance"
-                    value={naissance}
-                    type="text"
-                />
-
-                <label className="label">Pseudo</label>
-                <input onChange={handlePseudo} className="input" data-field-name="pseudo" value={pseudo} type="text" />
-
-                <label className="label">Email</label>
-                <input onChange={handleEmail} className="input" data-field-name="email" value={email} type="email" />
-
-                <label className="label">Password</label>
-                <input
-                    onChange={handlePassword}
-                    className="input"
-                    data-field-name="password"
-                    value={password}
-                    type="password"
-                />
+                <div className="name">
+                    <label className="label">Nom </label>
+                    <input onChange={handleName} className="input" data-field-name="nom" value={name} type="text" />
+                </div>
+                <div className="prenom">
+                    <label className="label">Prenom </label>
+                    <input
+                        onChange={handleLastname}
+                        className="input"
+                        data-field-name="prenom"
+                        value={lastname}
+                        type="text"
+                    />
+                </div>
+                <div className="dateOfBirth">
+                    <label className="label">Date de Naissance </label>
+                    <input
+                        onChange={handleNaissance}
+                        className="input"
+                        data-field-name="naissance"
+                        value={naissance}
+                        type="text"
+                    />
+                </div>
+                <div className="pseudo">
+                    <label className="label">Pseudo </label>
+                    <input
+                        onChange={handlePseudo}
+                        className="input"
+                        data-field-name="pseudo"
+                        value={pseudo}
+                        type="text"
+                    />
+                </div>
+                <div className="mail">
+                    <label className="label">Email </label>
+                    <input onChange={handleEmail} className="input" data-field-name="email" value={email} type="text" />
+                </div>
+                <div className="password">
+                    <label className="label">Password </label>
+                    <input
+                        onChange={handlePassword}
+                        className="input"
+                        data-field-name="password"
+                        value={password}
+                        type="password"
+                    />
+                </div>
 
                 <button onClick={handleSubmit} className="btn" type="submit">
                     Envoyer formulaire
