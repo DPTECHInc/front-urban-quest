@@ -1,14 +1,9 @@
 .Post {
     justify-content: center !important;
     align-items: center !important;
-    background: rgb(193, 193, 193);
-    background: linear-gradient(
-        90deg,
-        rgba(193, 193, 193, 1) 0%,
-        rgba(193, 196, 196, 1) 50%,
-        rgba(205, 199, 199, 1) 100%
-    );
-    color: white;
+    background: rgb(245, 243, 243);
+
+    color: black;
     border-radius: 20px;
     margin: 2rem auto 5rem auto;
     width: 45rem;
@@ -18,8 +13,10 @@
 
 .TitrePost {
     box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.479);
-    background-color: rgba(0, 0, 0, 0.39);
+    background-color: rgb(129 163 157);
     border-radius: 10px;
+    padding: 10px;
+    color: white;
     width: 50%;
     margin-left: 25%;
 }

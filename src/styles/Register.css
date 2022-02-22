@@ -1,0 +1,38 @@
+.registerForm {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    justify-content: center;
+}
+
+.name {
+    margin: 10px;
+}
+
+.prenom {
+    margin: 10px;
+}
+
+.dateOfBirth {
+    margin: 10px;
+}
+
+.pseudo {
+    margin: 10px;
+}
+
+.mail {
+    margin: 15px;
+}
+
+.password {
+    margin: 10px;
+}
+
+.btn {
+    border-radius: 10px;
+}
+
+.input {
+    border-radius: 10px;
+}
