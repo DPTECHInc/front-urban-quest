@@ -1,11 +1,17 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import Header from "../assets/mountain-lake-header_1.jpg";
 import Logo from "../assets/Logo.png";
 import "../styles/profil.css";
 import "../styles/EditProfil.css";
 
 function EditProfil(props) {
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState(false);
+
+    const navigate = useNavigate();
+
     let [nom, setNom] = useState("");
     const handleChangeNomField = (event) => {
         setNom(event.target.value);
@@ -28,8 +34,32 @@ function EditProfil(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(nom);
-        return false;
+        if (nom === "" || prenom === "" || naissance === "" || pseudo === "") {
+            setError(true);
+        } else {
+            setSubmitted(true);
+            setError(false);
+        }
+        sendEdit();
+        console.log("it's working");
+        navigate("/");
+    };
+
+    const sendEdit = async () => {
+        await fetch("http://localhost:3002/profil", {
+            method: "PUT",
+            headers: {
+                Authorization: "bearer " + localStorage.getItem("@token"),
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                nom: nom,
+                prenom: prenom,
+                naissance: naissance,
+                pseudo: pseudo,
+            }),
+        });
+        console.log("I have changed");
     };
 
     return (
