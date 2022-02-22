@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AddImage from "./ButtonImg";
 
 const CreatePost = (props) => {
@@ -9,7 +9,8 @@ const CreatePost = (props) => {
     //     await register(nom, prenom, email, pass);
     //     console.log(value.nom, value.prenom, value.email, value.pass);
     // };
-
+    // States for Redirect URL
+    const navigate = useNavigate();
     // States for checking the errors
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState(false);
@@ -21,7 +22,7 @@ const CreatePost = (props) => {
             setNom(value);
         }
     };
-    const navigate = useNavigate();
+
     const [contenu, setContenu] = useState("");
     const handleChangeContenu = (event) => {
         const value = event.target.value;
@@ -46,7 +47,18 @@ const CreatePost = (props) => {
         }
     };
 
-    const [image, setImage] = useState(null);
+    // const [img, setImage] = useState("");
+    // const handleChangeImage = (event) => {
+    //     const value = event.target.value;
+
+    //     if (value !== "") {
+    //         setImage(value);
+    //     }
+    //     const formData = new FormData();
+    //     formData.append("image", img.raw);
+    // };
+
+    const [image, setImage1] = useState(null);
 
     // Handling the form submission
     const handleSubmit = (e) => {
@@ -64,6 +76,7 @@ const CreatePost = (props) => {
         await fetch("http://localhost:3002/posts", {
             method: "POST",
             headers: {
+                Authorization: "bearer " + localStorage.getItem("@token"),
                 "Content-type": "application/json",
             },
             body: JSON.stringify({
@@ -71,6 +84,7 @@ const CreatePost = (props) => {
                 contenu: contenu,
                 categorie: categorie,
                 location: location,
+                img: { body: FormData },
             }),
         });
     };
@@ -154,7 +168,7 @@ const CreatePost = (props) => {
                         />
                     </div>
 
-                    <AddImage onSelectImage={setImage} />
+                    <AddImage onSelectImage={setImage1} />
 
                     <div>
                         <button onClick={handleSubmit} type="submit" className="butCreate">
