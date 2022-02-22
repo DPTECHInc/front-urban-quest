@@ -4,7 +4,6 @@ import { useState } from "react";
 import "../styles/Post.css";
 import PostComment from "./PostComment";
 import { FaRegComments, FaTimes, FaCheckCircle } from "react-icons/fa";
-import Button from "react-bootstrap/Button";
 
 function Post(props) {
     const [userAuthToken, setUserAuthToken] = useState(localStorage.getItem("@token", null));
@@ -16,7 +15,7 @@ function Post(props) {
 
     /* Récupération des posts */
     const addLike = async () => {
-        // Requête POST vers http://localhost:8000/posts/like et on attends la réponse
+        // Requête POST vers http://localhost:3002/posts/like et on attends la réponse
         const response = await fetch("http://localhost:3002/posts/like", {
             method: "POST",
             headers: {
